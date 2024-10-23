@@ -82,7 +82,3 @@ O repositório contém diversos exemplos de código em C e C++. Você pode encon
 - [C++ Programming Language - Bjarne Stroustrup](https://en.wikipedia.org/wiki/C%2B%2B)
 - [Documentação GCC](https://gcc.gnu.org/onlinedocs/gcc/)
 - [Tutorial C++](https://www.learncpp.com/)
-
----
-
-Sinta-se à vontade para adicionar, remover ou modificar seções conforme necessário para atender às suas necessidades específicas!
