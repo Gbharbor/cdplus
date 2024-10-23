@@ -1,32 +1,34 @@
-#include <string> //for using string type
-#include <iostream> //for standard input/output
+#include <string>   // Para usar o tipo string
+#include <iostream> // Para entrada/saída padrão
+
 /*
-CONSTANTS IN C++
-Constants are fixed values that cannot be changed after being defined.
+CONSTANTES EM C++
+Constantes são valores fixos que não podem ser alterados após serem definidos.
 
-type = const 
-const keyword defines a constant that respects the rules of scope, ensuring
-that its value cannot be changed any time.
+- Tipo: const
+  A palavra-chave const define uma constante que respeita as regras de escopo,
+  garantindo que seu valor não possa ser alterado em nenhum momento.
 */
-const double PI = 3.14159;
-const int maxAge = 100;
+const double PI = 3.14159;    // Constante do tipo double
+const int maxAge = 100;       // Constante do tipo int
 
-//Type = constexpr
-//The constexpr keyword is used for values that must be known and evaluated at compile time.
-constexpr int square (int x) {
-    return x * x;
-};
-constexpr int value = square (5); //Evaluated at compile time
+// Tipo: constexpr
+// A palavra-chave constexpr é usada para valores que devem ser conhecidos e avaliados em tempo de compilação.
+constexpr int square(int x) { 
+    return x * x; 
+}
+constexpr int value = square(5); // Avaliado em tempo de compilação
 
-//type = #DEFINE
-//The define directive is a processor directive that creates macros.
-//I is less safe because it does not respect scope and does not provide type checking.
+// Tipo: #DEFINE
+// A diretiva define é uma diretiva de pré-processador que cria macros.
+// É menos segura porque não respeita escopo e não fornece verificação de tipo.
 #define max_size 100
-int array[max_size];
+int array[max_size]; // Declaração de um array com tamanho máximo
 
-//Literals
-//Literals are fixed values that are directly placed in the code.
-int age = 25; //integer literal
-double rate = 4.5; //floating-point literal
-char letter = 'B'; //character literal
-// string name = "joao"; //String literal
+// LITERAIS
+// Literais são valores fixos que são colocados diretamente no código.
+int age = 25;          // Literal inteiro
+double rate = 4.5;    // Literal de ponto flutuante
+char letter = 'B';     // Literal de caractere
+// string name = "joao"; // Literal de string (comentado)
+// Observação: Para usar 'string', é necessário incluir a biblioteca <string>.

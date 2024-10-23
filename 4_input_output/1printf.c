@@ -1,12 +1,14 @@
-/*EXEMPLO DE OUTPUT PRINTF: usando variavel %d (valores inteiros)*/
+#include <stdio.h>  // Inclui a biblioteca padrão de entrada e saída para usar printf
+#include <stdlib.h> // Inclui a biblioteca padrão para funcionalidades como alocação de memória
 
-#include <stdio.h> //aqui inclui a biblioteca standard input output da linguagem C, inclusive a funcao printf vem dessa biblioteca.
-#include <stdlib.h> //ja aqui inclui a standard library do C, desde alocacao de memoria, controle de processos, conversao numerica, etc.
+int main() { // Função principal do programa, ponto de entrada em C
+    int numero1; // Declaração de uma variável inteira chamada numero1
+    numero1 = 21; // Atribuição do valor 21 à variável numero1
 
-int main() { //int main define a funcao principal do programa , em C o ponto de entrada de qualquer programa é a main().
-    int numero1; //aqui declaramos uma variavel inteira chamada numero1
-    numero1 = 21; //aqui demos valor a variavel inteira numero1
-        printf("o valor do numero é: %d\n", numero1); //aqui esta o printf que serve para imprimir textos e variaveis na tela.
-        //porem o %d nao e mostrado pq ele so serve para dizer que estamos a espera de um numero inteiro, que é o 21 
-        return 0;// aqui e para dizer q a funcao main esta terminando e retornando 0 para o sistema operacional, em C significa que o programa foi concluido com sucesso.
-}; // em C n e necessario usar o ponto e virgula
+    // Impressão do valor da variável usando printf
+    // O especificador %d é usado para formatar a saída como um inteiro
+    printf("O valor do numero é: %d\n", numero1); 
+
+    // Retorno 0 indica que a função main terminou com sucesso
+    return 0; 
+} // Fim da função main

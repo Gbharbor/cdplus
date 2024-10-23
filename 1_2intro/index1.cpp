@@ -1,14 +1,14 @@
-//USANDO COUT 
-#include <iostream> // Includes the standard input-output library, necessary to use 'cout' and 'cin'.
+#include <iostream> // Inclui a biblioteca padrão de entrada e saída, necessária para usar 'cout' e 'cin'.
 
-using namespace std; // Allows you to use elements from the C++ standard library without needing to write 'std::' before them.
+using namespace std; // Permite usar elementos da biblioteca padrão C++ sem precisar escrever 'std::' antes deles.
 
-int main() { // Main function of the program, where execution begins. 'int' indicates that it will return an integer value.
+int main() { // Função principal do programa, onde a execução começa. 'int' indica que ela retornará um valor inteiro.
 
-    cout << "Hello world" << endl << "Hello again"; // Sends the message "Hello world" to the screen, followed by a new line, and then "Hello again".
-    // 'cout' is used to display text on the screen.
-    // '<<' is the insertion operator that directs the text to 'cout'.
-    // 'endl' is a manipulator that creates a new line in the console.
+    // Envia a mensagem "Hello world" para a tela, seguida de uma nova linha, e depois "Hello again".
+    cout << "Hello world" << endl << "Hello again"; 
+    // 'cout' é usado para exibir texto na tela.
+    // '<<' é o operador de inserção que direciona o texto para 'cout'.
+    // 'endl' é um manipulador que cria uma nova linha no console.
 
-    return 0; // Ends the 'main' function and returns 0 to indicate that the program finished successfully.
+    return 0; // Termina a função 'main' e retorna 0 para indicar que o programa foi concluído com sucesso.
 }

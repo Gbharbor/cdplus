@@ -1,60 +1,81 @@
-#include <string> //for using string type
-#include <iostream> //for standard input/output
+#include <string>   // Para usar o tipo string
+#include <iostream> // Para entrada/saída padrão
 
 /*
-VARIABLES IN C++
-A variable in C++ is a space in memory that stores a value and is identified bya name.
-To use a variable, you need to define its data type (such as int,float,char,etc.), which indicates what kind of information the variable can hold.
-
+VARIÁVEIS EM C++
+Uma variável em C++ é um espaço na memória que armazena um valor e é identificada por um nome.
+Para usar uma variável, você precisa definir seu tipo de dado (como int, float, char, etc.), 
+que indica que tipo de informação a variável pode conter.
 */
-int age = 25; // stires an integer value
-float height = 1.75; //stores a floating point value
-char initial = 'A';   //stores a character
-
-/*
-RESERVING MEMORY
-Each variable occupies a specific amount of memory. Memory in c++ is measured in bytes (each byte can be thought of as a "cubicle" of storage).
-The data type of a variable determines how many bytes it will occupy in memory.
-*/
-double pi = 3.141592653589793; // More precise than float
-int age = 25;
-float height = 1.75;
-char initial = 'A';
-bool isApproved = true;
+int age = 25;               // Armazena um valor inteiro
+float height = 1.75;       // Armazena um valor de ponto flutuante
+char initial = 'A';        // Armazena um caractere
 
 /*
-STRUCTURED DATA TYPES
-Array: A collection of elements of the same type, accessed by an index.
+RESERVANDO MEMÓRIA
+Cada variável ocupa uma quantidade específica de memória. A memória em C++ é medida em bytes (cada byte pode ser pensado como um "cubículo" de armazenamento).
+O tipo de dado de uma variável determina quantos bytes ela ocupará na memória.
 */
-int numbers[5] = {1,2,3,4,5}; //array in integers
+double pi = 3.141592653589793; // Mais preciso que float
+bool isApproved = true;        // Armazena um valor booleano
+
 /*
-STRUCTURED DATA TYPES
-Struct and Class: Allow grouping different types of data under the same name, creating new strucures.
+TIPOS DE DADOS ESTRUTURADOS
+Array: Uma coleção de elementos do mesmo tipo, acessados por um índice.
 */
-struct person {
-    //string name1;
-    int age1;
-    float height1;
+int numbers[5] = {1, 2, 3, 4, 5}; // Array de inteiros
+
+/*
+TIPOS DE DADOS ESTRUTURADOS
+Struct e Class: Permitem agrupar diferentes tipos de dados sob o mesmo nome, criando novas estruturas.
+*/
+struct Person {
+    std::string name;  // Armazena o nome da pessoa
+    int age;           // Armazena a idade da pessoa
+    float height;      // Armazena a altura da pessoa
 };
 
 /*
 VOID
-The void type is used to indicate that a function does not return any value.
-I is not used to store variable.
+O tipo void é usado para indicar que uma função não retorna nenhum valor.
+Não é utilizado para armazenar variáveis.
 */
 void displayMessage() {
-    //cout <<"hello, world" <<endl;
-};
+    std::cout << "Hello, world!" << std::endl; // Exibe uma mensagem
+}
+
 /*
-SIGNED AND UNSIGNED TYPES
+TIPOS ASSINADOS E NÃO ASSINADOS
 */
-signed int signedNumber = -100;   // Can be negative or positive
-unsigned int unsignedNumber = 200; // Only positive
+signed int signedNumber = -100;    // Pode ser negativo ou positivo
+unsigned int unsignedNumber = 200;  // Apenas positivo
+
 /*
 INT, SHORT, LONG, LONG LONG
-Choosing the appropriate data type helps optimize memory usage and program performance
+Escolher o tipo de dado apropriado ajuda a otimizar o uso de memória e o desempenho do programa.
 */
-short int smallNum = 32000;          // For small values
-int standardNumber = 100000;         // For common values
-long int largeNumber = 1000000000;   // For large values
-long long int veryLargeNumber = 1000000000000; // For enormous values
+short int smallNum = 32000;                  // Para valores pequenos
+int standardNumber = 100000;                 // Para valores comuns
+long int largeNumber = 1000000000;           // Para valores grandes
+long long int veryLargeNumber = 1000000000000; // Para valores enormes
+
+int main() {
+    // Exibindo valores para verificar se estão corretos
+    std::cout << "Idade: " << age << std::endl;
+    std::cout << "Altura: " << height << std::endl;
+    std::cout << "Inicial: " << initial << std::endl;
+    std::cout << "Pi: " << pi << std::endl;
+    std::cout << "Aprovado: " << (isApproved ? "Sim" : "Não") << std::endl;
+
+    // Exibindo o array
+    std::cout << "Números no array: ";
+    for (int number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << std::endl;
+
+    // Chamando a função
+    displayMessage();
+
+    return 0; // Indica que o programa foi concluído com sucesso
+}
