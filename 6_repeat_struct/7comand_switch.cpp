@@ -1,30 +1,9 @@
-/*
-SWITCH :  nao é um laço ! 
-A estrutura switch é uma forma de selecionar entre múltiplas opções, dependendo do valor de uma expressão. Em vez de usar várias instruções if para testar uma única variável, você pode usar um switch para tornar o código mais claro e eficiente.
-
-switch: Usado para selecionar entre múltiplas opções de forma mais clara e eficiente. É uma alternativa a múltiplas instruções if quando você está verificando o valor de uma única variável contra vários casos.
-
-switch (expressão) {
-    case valor1:
-        // Instruções para valor1
-        break;
-    case valor2:
-        // Instruções para valor2
-        break;
-    // ...
-    default:
-        // Instruções se nenhum case for atendido
-}
-case: Define um valor que a expressão pode ter.
-break: Interrompe a execução após a execução do código para o caso correspondente. Se break não for usado, a execução continuará nos próximos casos (isso é chamado de "fall-through").
-default: Opcional, é executado se nenhum dos valores especificados em case for atendido.
-
-*/
-//EXEMPLO 1 :  dia da semana com base em um número:
 #include <iostream>
 using namespace std;
 
+// Função principal
 int main() {
+    // Seção 1: Exemplo de switch para determinar o dia da semana
     int dia;
 
     cout << "Digite um número de 1 a 7 para o dia da semana: ";
@@ -55,22 +34,13 @@ int main() {
         default:
             cout << "Número inválido! Digite um número de 1 a 7." << endl;
     }
+    cout << endl;  // Para separar a saída
 
-    return 0;
-}
-/*
-Digite um número de 1 a 7 para o dia da semana: 3
-Terça-feira
-*/
-//EXEMPLO 2 : SWITCH EM LACOS ANINHADOS
-#include <iostream>
-using namespace std;
-
-int main() {
+    // Seção 2: Uso do switch em loops aninhados
     for (int i = 0; i < 2; i++) {  // Loop externo
         int escolha;
         cout << "Escolha (1 ou 2): ";
-        cin >> escolha;
+        cin >> escolha;  // Lê a escolha do usuário
 
         switch (escolha) {  // Estrutura switch
             case 1:
@@ -82,12 +52,26 @@ int main() {
             default:
                 cout << "Opção inválida." << endl;
         }
+        cout << endl;  // Para separar a saída de cada iteração
     }
-    return 0;
+
+    // Seção 3: Outro exemplo de estrutura switch
+    int x;
+    cout << "Digite um valor para x (10 ou 20): ";
+    cin >> x;  // Lê o valor de x
+
+    switch (x) {
+        case 10:
+            cout << "x é igual a 10" << endl;
+            break; // Sai do switch
+        case 20:
+            cout << "x é igual a 20" << endl;
+            break; // Sai do switch
+        default:
+            cout << "x não é 10 nem 20" << endl;
+            break; // Sai do switch
+    }
+    cout << endl; // Para separar a saída
+
+    return 0;  // Finaliza o programa
 }
-/*
-Escolha (1 ou 2): 1
-Você escolheu a opção 1.
-Escolha (1 ou 2): 3
-Opção inválida.
-*/

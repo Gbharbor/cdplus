@@ -8,22 +8,14 @@ Em vez de armazenar dados em uma linha única, como em um vetor, uma matriz arma
 A seguir, veremos os principais conceitos sobre o uso de matrizes em C e C++.
 */
 
-int main() {
+// Função para demonstrar matrizes bidimensionais
+void exemploMatrizBidimensional() {
     // Declaração e Inicialização de Matrizes
-    // Para declarar uma matriz, precisamos especificar o número de linhas e colunas que ela terá.
-    // Aqui está um exemplo para declarar uma matriz de inteiros com 3 linhas e 4 colunas.
     int matriz[3][4] = {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
         {9, 10, 11, 12}
     };
-
-    /*
-    Cada elemento da matriz pode ser acessado por meio de seus índices de linha e coluna.
-    Neste exemplo, a matriz `matriz` possui:
-    - 3 linhas
-    - 4 colunas
-    */
 
     // Acessando Elementos de uma Matriz
     int valor = matriz[1][2]; // Acessa o elemento na segunda linha, terceira coluna
@@ -37,14 +29,13 @@ int main() {
         }
         cout << endl;                       // Quebra de linha após cada linha da matriz
     }
+}
 
-    /*
-    Matrizes Dinâmicas
-    Em C++, para criar matrizes cujo tamanho é definido durante a execução, usamos alocação dinâmica de memória com `new`.
-    */
-
+// Função para demonstrar matrizes dinâmicas
+void exemploMatrizDinamica() {
     int linhas = 3, colunas = 4;
     int** matrizDinamica = new int*[linhas]; // Cria um array de ponteiros para as linhas
+
     for (int i = 0; i < linhas; i++) {
         matrizDinamica[i] = new int[colunas]; // Cada ponteiro aponta para um array de colunas
     }
@@ -70,27 +61,15 @@ int main() {
         delete[] matrizDinamica[i]; // Libera cada linha
     }
     delete[] matrizDinamica; // Libera o array de ponteiros
-
-    /*
-    Resumo:
-    - Em C/C++, uma matriz é um array bidimensional representado por linhas e colunas.
-    - Podemos inicializar matrizes com valores ou preencher cada elemento individualmente.
-    - Matrizes são percorridas com loops `for` aninhados.
-    - Em C++, podemos criar matrizes dinâmicas com `new` e liberar a memória com `delete`.
-    */
-
-    return 0;
 }
 
-//EXEMPLO de matriz tridimencional : 
-#include <iostream>
-using namespace std;
-
-int main() {
+// Função para demonstrar matrizes tridimensionais
+void exemploMatrizTridimensional() {
     // Declaração e inicialização de uma matriz tridimensional 2x2x2
     int tritabela[2][2][2] = {{{9, 8}, {7, 6}}, {{5, 4}, {3, 2}}};
     
     // Laços aninhados para percorrer a matriz tridimensional
+    cout << "\nElementos da matriz tridimensional:" << endl;
     for (int i = 0; i < 2; i++) {              // Itera sobre a primeira dimensão
         for (int j = 0; j < 2; j++) {          // Itera sobre a segunda dimensão
             for (int k = 0; k < 2; k++) {      // Itera sobre a terceira dimensão
@@ -100,7 +79,13 @@ int main() {
         }
         cout << endl; // Nova linha após percorrer a segunda dimensão
     }
-    
-    system("PAUSE > null"); // Pausa o sistema antes de fechar (funciona em Windows)
+}
+
+int main() {
+    // Chamadas das funções para demonstrar o uso de matrizes
+    exemploMatrizBidimensional();
+    exemploMatrizDinamica();
+    exemploMatrizTridimensional();
+
     return 0; // Retorna 0 para indicar que o programa terminou corretamente
 }

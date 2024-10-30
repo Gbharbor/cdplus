@@ -1,28 +1,15 @@
-//Estrutura de Controle de Fluxo
 #include <stdio.h>
 
 int main() {
+    // 1. Declaração de variáveis
     int x = 10, y = 20;
-
-    // --- Estruturas de Controle Condicional ---
-
-    // 1. Condicional if-else
-    printf("Condicional if-else:\n");
-    if (x > y) {
-        printf("x é maior que y\n");
-    } else if (x == y) {
-        printf("x é igual a y\n");
-    } else {
-        printf("x é menor que y\n");
-    }
-    printf("\n"); // Para separar a saída
 
     // 2. Estrutura switch
     printf("Estrutura switch:\n");
     switch (x) {
         case 10:
             printf("x é igual a 10\n");
-            break; // Sai do switch
+            break; // Sai do switch após encontrar a correspondência
         case 20:
             printf("x é igual a 20\n");
             break; // Sai do switch
@@ -65,7 +52,7 @@ int main() {
     printf("Uso do break no laço for:\n");
     for (i = 0; i < 10; i++) { // Laço que vai de 0 a 9
         if (i == 5) { // Se i for igual a 5
-            break; // Sai do laço
+            break; // Sai do laço imediatamente
         }
         printf("i = %d\n", i); // Exibe o valor de i
     }
@@ -75,7 +62,7 @@ int main() {
     printf("Uso do continue no laço for:\n");
     for (i = 0; i < 5; i++) { // Laço que vai de 0 a 4
         if (i == 2) { // Se i for igual a 2
-            continue; // Pula a iteração atual
+            continue; // Pula a iteração atual, volta para o início do laço
         }
         printf("i = %d\n", i); // Exibe o valor de i
     }
@@ -90,6 +77,27 @@ int main() {
 
 etiqueta: // Etiqueta para onde o programa pode saltar
     printf("Salto realizado com goto!\n");
+
+    // 9. Exemplo adicional com switch para mostrar as categorias de idade
+    printf("\nExemplo de switch para categorias de idade:\n");
+    int idade;
+    printf("Digite sua idade: ");
+    scanf("%d", &idade);
+    
+    switch (idade) {
+        case 0 ... 12: // Para idades de 0 a 12
+            printf("Você é uma criança.\n");
+            break;
+        case 13 ... 19: // Para idades de 13 a 19
+            printf("Você é um adolescente.\n");
+            break;
+        case 20 ... 64: // Para idades de 20 a 64
+            printf("Você é um adulto.\n");
+            break;
+        default: // Qualquer idade maior ou igual a 65
+            printf("Você é um idoso.\n");
+            break;
+    }
 
     return 0; // Finaliza o programa
 }
