@@ -1,4 +1,3 @@
-
 //Matriz tridimensional
 #include <stdio.h>
 
