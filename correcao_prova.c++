@@ -1,93 +1,137 @@
-- qual funcao das variaveis.
-- qual a finalidade das bibliotecas.
-- complete as lacunas do codigo:
+// 1. Variáveis
+// Variáveis são usadas para armazenar valores temporários na memória durante a execução do programa.
+// Exemplos: int, float, string, etc.
 
-#include<___________> <stdio.h>
-int main(){
-______ idade; int (por ser um nuemro inteiro)
-printf("Entre com a idade");
-scanf("%____", &idade); (%d ) para ler inteiros
-return 0;
-}
-- %f ->  float 
-- %g -> alterna entre notacao fixa e cientifica, dependendo do valor 
-- %e -> notacao cientifica 
-- funcao de um compilador? 
-um software que traduz codigo fonte escrito em uma linguagem de programacao para codigo de maquina
-o compilador converte codigo fonte para linguagem de maquina, permitindo que o programa seja executado diretamente pelo computador.
-#include<___________>  // <iostream> // biblio padrao para entrada e saida em C++ 
-using ________ std; // namespace std , para usar o cout e cin sem precisar dos :: 
-int main(){
-______ idade; // int declaracao de um inteiro
-cout<<"Entre com a idade";
-cin>> ______; // le o valor q o usuario mandar e armazena na variavel idade que e um inteiro
-cout<<idade;
-return 0;
-}
+// 2. Bibliotecas
+// As bibliotecas fornecem funcionalidades adicionais ao programa, como entrada/saída ou operações matemáticas.
+// Exemplos:
+// <iostream> -> Biblioteca padrão para entrada e saída em C++ (ex.: cin, cout).
+// <stdio.h> -> Biblioteca para funções de entrada/saída em C (ex.: printf, scanf).
 
+// 3. Estrutura básica de um programa em C++:
+// Sequência correta:
+// 1. Bibliotecas
+// 2. Funções do usuário
+// 3. Função main
 
-- o codigo entrara em um loop infinito pq o valor de i nunca chegara a zero., podemos criar uma condicao dentro que quando i chega a 10 por exemplo, interrempo.
- int main(){
-  int i = 1;
-  while (i > 0) {
-    i++;
-  }
+#include <iostream> // Biblioteca padrão
+using namespace std; // Para usar cin e cout sem std::
+
+int main() {
+    // 4. Leitura de valores do usuário
+    int idade; // Declarar variável inteira
+    cout << "Entre com a idade: ";
+    cin >> idade; // Entrada do usuário
+    cout << "Idade: " << idade << endl; // Saída do valor
+    return 0;
 }
 
-corrigido : 
-int main () {
+// 5. Função do compilador
+// Um compilador traduz código-fonte escrito em linguagem de programação para código de máquina.
+// Ele permite que o programa seja executado diretamente pelo computador.
+
+// 6. Controle de loops
+// Exemplo de loop infinito:
+int main() {
+    int i = 1;
+    while (i > 0) { // Condição sempre verdadeira
+        i++; // Incrementa indefinidamente
+    }
+    return 0;
+}
+
+// Corrigido com condição de saída:
+int main() {
     int i = 1;
     while (i > 0) {
-        printf("valor de i: ", i)
-        if (i == 10) {
+        printf("Valor de i: %d\n", i); // Exibe o valor de i
+        if (i == 10) { // Interrompe o loop
             break;
         }
-        i++ 
+        i++;
     }
-    printf("loop finalizado valor final de i: ", i)
+    printf("Loop finalizado, valor final de i: %d\n", i);
     return 0;
 }
 
-Unsigned -> remova a possibilidade de numeros negativos
+// 7. Diferença entre while e do-while:
+// - while: Verifica a condição antes de executar o bloco.
+// - do-while: Executa o bloco pelo menos uma vez, mesmo que a condição seja falsa.
 
-- um programa c ou c++ deve possuir uma certa estrutura para ser valido, basicamente tem 3 blocos distintos nos programas. a sequencia correta desses blocos é 
-bibliotecas , funcoes do usuario , funcao main.
-bibliotecas , funcoes do usuario e main 
- a estrutura geral de um programa c ou c++ comeca coma inclusao de biblitoecas segue com a funcao definidas pelo usuario e termina com a execucao da funcao main .
- - sabemos q para impirmir usamos o \t chamado tubulacao, e para que serve isso ? . a sequencia de escape \t insere uma tubulacao horizontal no texto exibido deslocando o conteudo para a proxima parada, de tubulacao.
+// Exemplo de do-while:
+int main() {
+    int i = 0;
+    do {
+        cout << i << endl;
+        i++;
+    } while (i < 5); // Condição verificada após a execução
+    return 0;
+}
 
- - considere a leitura de 3 numeros n1, n2, n3 ; escreva uma estrutura de validacao na linguagem C++ e apresente o maior dentre eles.
- #include <iostream>
- using namespace std;
- int main () {
-    int n1, n2, n3;
-    cout << "digite os valores de n1, n2, n3"
-    cin >> n1 >> n2 >> n3
-    
-    if ((n1>n2) && (n1 > n3)) {
-        cout << "n1 e o maior! "<< n1 <<endl;
-    } else if ((n2>n1) && (n2 > n3)) { 
-        cout<< "n2 e maior! "<<n2<< endl;
+// 8. Estruturas condicionais:
+// if: Testa a condição entre parênteses. Se verdadeira, executa o bloco de código.
+// else: Opcional, executado se a condição do if for falsa.
+
+int main() {
+    int idade;
+    cout << "Digite sua idade: ";
+    cin >> idade;
+
+    if (idade >= 18) {
+        cout << "Maior de idade" << endl;
     } else {
-        cout <<"n3 e o maior! "<<n3 <<endl;
+        cout << "Menor de idade" << endl;
     }
     return 0;
- }
-
- - quanto aos lacos de repeticao oq difere wjile do do while,
- o laco while basicamente diz pro codiugo continuar a execucao enquanto a condicao for verdadeira ja o do while primeiro executa e depois verifica a condicao.
- a diferenca fundamente e q o do while executa o bloco ao menos uma vez, mesmo que a condiucao seja falsa, enquanto o while veririfcxa a condicao antes de executar o bloco.
- =
- - a condicao verdadeira ou falsa e chamada de condicao logica. 
-
- - sobre AS ESTRUTURAS D CONDICIONAIS OU DECISao : 
-if ,  tesata a condicao expressa entre aprenteses e caso a condicao seja vdd, os comandos declarados entre as chaves serao executados.
-else,  e opcional e somen te e executada se a validacao do if for falsa.
-
-- int main() {
-  string valor = "1"; //string
-  string valor1 = "2"; //string
-  valor = valor + valor1;
-  cout << valor;
-  return 0; //vai impirmir : 12 pq estamos concatenando 2 strings
 }
+
+// 9. Comparando números e validando o maior:
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n1, n2, n3;
+    cout << "Digite os valores de n1, n2 e n3: ";
+    cin >> n1 >> n2 >> n3;
+
+    if ((n1 > n2) && (n1 > n3)) {
+        cout << "n1 é o maior: " << n1 << endl;
+    } else if ((n2 > n1) && (n2 > n3)) {
+        cout << "n2 é o maior: " << n2 << endl;
+    } else {
+        cout << "n3 é o maior: " << n3 << endl;
+    }
+    return 0;
+}
+
+// 10. Operador %
+// O operador % retorna o resto da divisão.
+// Exemplo:
+int main() {
+    int valor;
+    cout << "Digite um número: ";
+    cin >> valor;
+    cout << "Resto da divisão por 3: " << valor % 3 << endl;
+    return 0;
+}
+
+// 11. Estruturas de repetição equivalentes:
+// Usando while:
+int main() {
+    int i = 0; // Inicialização
+    while (i < 5) { // Condição
+        cout << i << endl; // Comandos
+        i++; // Incremento
+    }
+    return 0;
+}
+
+// Usando for:
+int main() {
+    for (int i = 0; i < 5; i++) { // Inicialização; Condição; Incremento
+        cout << i << endl; // Comandos
+    }
+    return 0;
+}
+
+// O comando for combina inicialização, condição e incremento em uma única linha, enquanto o while separa essas partes.
