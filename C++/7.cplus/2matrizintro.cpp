@@ -10,7 +10,7 @@ void exemploMatrizBidimensional() {
     int valor = matriz [1][2]; //acessa o elemento na segunda linha , terceira coluna
     matriz[0][3]=20; //altera o elemento na primeira linha, quarta coluna para 20
 
-    //percorrendo a amtriz com for
+    //percorrendo a matriz com for
     cout<<"Elementos da matriz: "<<endl;
     for(int i=0; i<3; i++) {    //percorre as linhas
         for (int j=0; j<4; j++){    //percorre as colunas

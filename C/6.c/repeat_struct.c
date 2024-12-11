@@ -75,7 +75,7 @@ int main() {
     }
     printf("Este código será ignorado.\n");
 
-etiqueta: // Etiqueta para onde o programa pode saltar
+    etiqueta: // Etiqueta para onde o programa pode saltar
     printf("Salto realizado com goto!\n");
 
     // 9. Exemplo adicional com switch para mostrar as categorias de idade

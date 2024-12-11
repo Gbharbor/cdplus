@@ -34,6 +34,7 @@ void exemploTrianguloPascal() {
     int tri[5][5] = {0};
     for (int i=0; i<linhas; i++) {
         for (int j=0; j <=i; j++) {
+            
             if (j== 0 || j==1) {
                 tri[i][j] =1;
             } else {

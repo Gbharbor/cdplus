@@ -38,7 +38,7 @@ int main() {
         cout<<"x é maior q 5 e y e menor q 30"<<endl;//ambas precisam ser verdadeiras
     }
 
-    //Estrutura condicional if, if-else, else
+    //Estrutura condicional if, else-if, else
     int idade;
     cout<<"\nEnsira sua idade: ";
     cin>>idade;

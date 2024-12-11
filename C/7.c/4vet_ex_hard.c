@@ -21,7 +21,7 @@ float calcular_media(float notas[], int tamanho) {
 }
 
 int main() {
-    struct Aluno alunos[MAX_ALUNOS];
+    struct Aluno alunos[MAX_ALUNOS];// semelhante aoi object ao JS
 
     // Entrada de dados
     for (int i = 0; i < MAX_ALUNOS; i++) {
@@ -55,7 +55,7 @@ void ordenar_notas(float notas[], int tamanho) {
     for (int i = 0; i < tamanho - 1; i++) {
         for (int j = i + 1; j < tamanho; j++) {
             if (notas[i] > notas[j]) {
-                float temp = notas[i];
+                float temp = notas[i]; // temp var temporaly
                 notas[i] = notas[j];
                 notas[j] = temp;
             }

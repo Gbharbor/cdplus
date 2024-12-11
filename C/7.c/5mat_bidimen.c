@@ -13,8 +13,8 @@ int main() {
     for (int i = 0; i < ALUNOS; i++) {
         printf("Digite as notas do aluno %d:\n", i + 1);
         for (int j = 0; j < DISCIPLINAS; j++) {
-            printf("Nota da disciplina %d: ", j + 1);
-            scanf("%f", &notas[i][j]);
+            printf("Nota da disciplina %d: ", j + 1); // showing
+            scanf("%f", &notas[i][j]);  //take data
         }
     }
 

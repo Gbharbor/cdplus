@@ -161,9 +161,6 @@ int main() {
     cout.precision(3);
     cout << fixed << "Número com precisão de 3 casas: " << pi << endl;
 
-    // Exemplo de Espaçamento, Preenchimento e Alinhamento
-    cout << "\nEspaçamento, Preenchimento e Alinhamento: " << endl;
-
     // Alinhamento à direita e preenchimento com espaços (padrão)
     cout << "Número com largura mínima de 5 (direita): ";
     cout << right;  // Alinha à direita
