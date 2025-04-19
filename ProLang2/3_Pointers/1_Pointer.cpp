@@ -4,6 +4,8 @@
 
 // Um ponteiro é uma variável que armazena o endereço de memória de outra variável.
 // Em vez de armazenar um valor diretamente, ele aponta para a localização desse valor na memória.
+//Um variavel possui 3 atributos (nome, valor e endereco) 
+
 
 // ---------------------------------------------
 // 1.1 Declarando Ponteiros

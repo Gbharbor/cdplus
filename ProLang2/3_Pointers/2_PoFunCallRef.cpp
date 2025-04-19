@@ -53,7 +53,7 @@ int main() {
 }
 
 // ---------------------------------------------
-// 2.1 Ponteiros para Vetores e Matrizes
+// 2.1 Ponteiros para Vetores e Matrizes(conjunto)
 // ---------------------------------------------
 
 // Ponteiros podem ser usados para acessar e manipular elementos de vetores e matrizes.

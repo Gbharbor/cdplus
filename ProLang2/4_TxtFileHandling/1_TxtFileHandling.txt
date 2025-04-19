@@ -1,0 +1,70 @@
+// 1. Manipulação de Arquivos do Tipo Texto
+
+// Definição:
+// Armazenar dados em variáveis é uma forma temporária de guardar informações.
+// Quando o programa encerra sua execução, esses dados desaparecem.
+// Já com arquivos, conseguimos armazenar os dados de forma permanente no disco.
+
+// 2. Biblioteca fstream:
+// A biblioteca <fstream> fornece os mecanismos para manipulação de arquivos em C++.
+// Tipos principais:
+// - ofstream: para **escrita** em arquivos
+// - ifstream: para **leitura** de arquivos
+// - fstream: para **leitura e escrita** no mesmo objeto
+
+// Escrevendo em um arquivo:
+// 1. Criamos um objeto do tipo `ofstream`.
+// 2. Abrimos um arquivo com esse objeto.
+// 3. Escrevemos os dados, de forma similar ao uso do `cout`.
+
+/*
+   ofstream escreve;
+   escreve.open("texto.txt");
+   escreve << "Texto a ser escrito";
+*/
+// Regras de segurança:
+// Sempre verifique se o arquivo foi aberto corretamente:
+/*
+   if (!escreve.is_open()) {
+      // tratar erro
+   }
+   escreve.close();
+*/
+// Lendo dados de um arquivo:
+// 1. Criamos um objeto do tipo `ifstream`.
+// 2. Abrimos o arquivo.
+// 3. Utilizamos uma das formas de leitura disponíveis:
+/*
+   ifstream leitura;
+   leitura.open("leitura.txt");
+
+// Modos de leitura:
+   char letra;
+   while (leitura.get(letra)) {
+      // Lê caractere por caractere
+   }
+
+   char vetor[80];
+   while (leitura.getline(vetor, 80)) {
+      // Lê até 80 caracteres e armazena no vetor
+   }
+
+   string texto;
+   while (getline(leitura, texto)) {
+      // Lê linha por linha (forma mais comum)
+}
+*/
+// Modos de abertura de arquivos:
+// Podemos abrir arquivos com diferentes "modos", dependendo do que queremos fazer:
+/*
+   ofstream agenda;
+   agenda.open("agenda.txt", ofstream::app); // Modo append (acrescentar ao final)
+   ios_base::in 
+   ios_base::out
+   ios_base::ate
+   ios_base::app
+   ios_base::trunc 
+   ios_base::binary 
+*/
+// Exemplo:
+// Se o arquivo já tem 10 linhas, o modo `app` adicionará uma nova na 11ª linha, sem apagar o conteúdo existente.
