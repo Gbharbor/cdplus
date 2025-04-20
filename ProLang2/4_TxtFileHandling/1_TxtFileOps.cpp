@@ -1,104 +1,104 @@
 #include <iostream>
-#include <fstream>  // Biblioteca fstream
+#include <fstream>
 #include <string>
 
 using namespace std;
 
 int main() {
-    // ---------- Escrita com ofstream ----------
-    ofstream arquivoEscrita;
-    // ios::out + ios::trunc (padrão ao usar apenas ofstream)
-    arquivoEscrita.open("exemplo_escrita.txt", ios_base::out | ios_base::trunc);
-    arquivoEscrita << "Linha 1: Texto gravado com ofstream.\n";
-    arquivoEscrita << "Linha 2: Outro texto qualquer.\n";
-    arquivoEscrita.close();
+    // ---------- Writing with ofstream ----------
+    ofstream writeFile;
+    // ios::out = open for writing | ios::trunc = erase existing content
+    writeFile.open("example_write.txt", ios_base::out | ios_base::trunc);
+    writeFile << "Line 1: Text written with ofstream.\n";
+    writeFile << "Line 2: Some other text.\n";
+    writeFile.close();
 
-    // ---------- Leitura com ifstream ----------
-    ifstream arquivoLeitura;
-    // ios::in é o padrão para ifstream, mas estamos explicitando aqui
-    arquivoLeitura.open("exemplo_escrita.txt", ios_base::in);
+    // ---------- Reading with ifstream ----------
+    ifstream readFile;
+    // ios::in = open for reading (default for ifstream)
+    readFile.open("example_write.txt", ios_base::in);
 
-    if (arquivoLeitura.is_open()) {
-        cout << "\n--- Leitura caractere por caractere ---\n";
-        char letra;
-        while (arquivoLeitura.get(letra)) {
-            cout << letra;
+    if (readFile.is_open()) {
+        cout << "\n--- Character-by-character reading ---\n";
+        char character;
+        while (readFile.get(character)) {
+            cout << character;
         }
 
-        arquivoLeitura.clear();              // Limpa flags de EOF
-        arquivoLeitura.seekg(0);             // Volta ao início do arquivo
+        readFile.clear();              // Clear EOF flags
+        readFile.seekg(0);             // Move back to beginning
 
-        cout << "\n\n--- Leitura com vetor de caracteres (getline) ---\n";
-        char vetor[80];
-        while (arquivoLeitura.getline(vetor, 80)) {
-            cout << vetor << endl;
+        cout << "\n\n--- Reading with character array (getline) ---\n";
+        char buffer[80];
+        while (readFile.getline(buffer, 80)) {
+            cout << buffer << endl;
         }
 
-        arquivoLeitura.clear();
-        arquivoLeitura.seekg(0);
+        readFile.clear();
+        readFile.seekg(0);
 
-        cout << "\n--- Leitura linha por linha (getline com string) ---\n";
-        string texto;
-        while (getline(arquivoLeitura, texto)) {
-            cout << texto << endl;
+        cout << "\n--- Line-by-line reading (getline with string) ---\n";
+        string text;
+        while (getline(readFile, text)) {
+            cout << text << endl;
         }
 
-        arquivoLeitura.close();
+        readFile.close();
     } else {
-        cout << "Erro ao abrir o arquivo para leitura." << endl;
+        cout << "Error opening the file for reading." << endl;
     }
 
-    // ---------- Escrita no final com ios::app ----------
-    ofstream arquivoAppend;
-    // Abre o arquivo e adiciona conteúdo ao final
-    arquivoAppend.open("exemplo_escrita.txt", ios_base::app);
-    arquivoAppend << "Linha 3: Essa linha foi adicionada com ios::app\n";
-    arquivoAppend.close();
+    // ---------- Appending to file with ios::app ----------
+    ofstream appendFile;
+    // ios::app = append at the end of the file
+    appendFile.open("example_write.txt", ios_base::app);
+    appendFile << "Line 3: This line was added using ios::app\n";
+    appendFile.close();
 
-    // ---------- Leitura e Escrita com fstream ----------
-    fstream arquivoLeituraEscrita;
-    // Abre o arquivo para leitura, escrita, move o cursor para o final, e mantém o conteúdo existente
-    arquivoLeituraEscrita.open("exemplo_fstream.txt", ios_base::in | ios_base::out | ios_base::app);
+    // ---------- Reading and writing with fstream ----------
+    fstream readWriteFile;
+    // ios::in = read | ios::out = write | ios::app = append
+    readWriteFile.open("example_fstream.txt", ios_base::in | ios_base::out | ios_base::app);
 
-    if (arquivoLeituraEscrita.is_open()) {
-        arquivoLeituraEscrita << "Nova linha adicionada com fstream.\n";
+    if (readWriteFile.is_open()) {
+        readWriteFile << "New line added using fstream.\n";
+        readWriteFile.seekg(0); // Go back to beginning for reading
 
-        // Volta ao início do arquivo para leitura
-        arquivoLeituraEscrita.seekg(0);
-
-        cout << "\n--- Leitura com fstream (modo app) ---\n";
-        string linha;
-        while (getline(arquivoLeituraEscrita, linha)) {
-            cout << linha << endl;
+        cout << "\n--- Reading with fstream (app mode) ---\n";
+        string line;
+        while (getline(readWriteFile, line)) {
+            cout << line << endl;
         }
 
-        arquivoLeituraEscrita.close();
+        readWriteFile.close();
     } else {
-        cout << "Erro ao abrir arquivo com fstream." << endl;
+        cout << "Error opening file with fstream." << endl;
     }
 
-    // ---------- Abertura em modo binário ----------
-    ofstream arquivoBinario;
-    arquivoBinario.open("exemplo_binario.dat", ios_base::out | ios_base::binary);
-    if (arquivoBinario.is_open()) {
-        string dados = "Arquivo salvo em modo binário\n";
-        arquivoBinario.write(dados.c_str(), dados.size());
-        arquivoBinario.close();
-        cout << "\n--- Arquivo salvo em modo binário ---\n";
+    // ---------- Opening in binary mode ----------
+    ofstream binaryFile;
+    // ios::binary = binary mode | ios::out = write
+    binaryFile.open("example_binary.dat", ios_base::out | ios_base::binary);
+    if (binaryFile.is_open()) {
+        string binaryData = "File saved in binary mode\n";
+        binaryFile.write(binaryData.c_str(), binaryData.size());
+        binaryFile.close();
+        cout << "\n--- File saved in binary mode ---\n";
     }
 
-    // ---------- Abertura com ios::ate ----------
-    fstream arquivoComAte;
-    arquivoComAte.open("exemplo_ate.txt", ios_base::in | ios_base::out | ios_base::ate);
-    if (arquivoComAte.is_open()) {
-        arquivoComAte << "Escrevendo no final com ios::ate\n";
-        arquivoComAte.seekg(0); // Volta ao início para leitura
-        string l;
-        cout << "\n--- Leitura após ios::ate ---\n";
-        while (getline(arquivoComAte, l)) {
-            cout << l << endl;
+    // ---------- Opening with ios::ate ----------
+    fstream ateFile;
+    // ios::ate = open and move cursor to end | ios::in = read | ios::out = write
+    ateFile.open("example_ate.txt", ios_base::in | ios_base::out | ios_base::ate);
+    if (ateFile.is_open()) {
+        ateFile << "Writing at the end using ios::ate\n";
+        ateFile.seekg(0); // Move to beginning for reading
+        string lineRead;
+        cout << "\n--- Reading after ios::ate ---\n";
+        while (getline(ateFile, lineRead)) {
+            cout << lineRead << endl;
         }
-        arquivoComAte.close();
+        ateFile.close();
     }
 
     return 0;
