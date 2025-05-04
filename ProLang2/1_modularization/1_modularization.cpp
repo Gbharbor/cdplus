@@ -27,6 +27,7 @@ int main() {
     /*
     Here, we are sorting the 'letters' vector in alphabetical order (based on the ASCII value of each character).
     The 'sort' function organizes the elements of the vector from beginning to end.
+    Here we are using algorithm lib
     */
     sort(letters.begin(), letters.end());
     cout << "Letters of your name in alphabetical order: ";
