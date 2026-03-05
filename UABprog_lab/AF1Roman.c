@@ -13,14 +13,14 @@ static int valor_romano(char c) {
         case 'C': return 100;
         case 'D': return 500;
         case 'M': return 1000;
-        default: return 0;
+        default:  return 0;
     }
 }
 
-static int par_subtrativo_valido(char atual, char seguinte) {
-    return (atual == 'I' && (seguinte == 'V' || seguinte == 'X')) ||
-           (atual == 'X' && (seguinte == 'L' || seguinte == 'C')) ||
-           (atual == 'C' && (seguinte == 'D' || seguinte == 'M'));
+static int par_subtrativo_valido(char a, char b) {
+    return (a == 'I' && (b == 'V' || b == 'X')) ||
+           (a == 'X' && (b == 'L' || b == 'C')) ||
+           (a == 'C' && (b == 'D' || b == 'M'));
 }
 
 int main(void) {
@@ -28,74 +28,87 @@ int main(void) {
     char romano[MAX_INPUT];
 
     printf("Introduza um numeral romano: ");
-    if (fgets(entrada, sizeof(entrada), stdin) == NULL) {
+    fflush(stdout);
+
+    if (!fgets(entrada, sizeof(entrada), stdin)) {
         printf("Erro: não foi possível ler a entrada.\n");
         return 1;
     }
 
+    /* Remove o '\n' do fgets (se existir) */
     entrada[strcspn(entrada, "\n")] = '\0';
 
-    size_t inicio = 0;
-    while (entrada[inicio] != '\0' && isspace((unsigned char)entrada[inicio])) {
-        inicio++;
+    /* Trim (ignora espaços no início e no fim) */
+    size_t ini = 0;
+    while (entrada[ini] && isspace((unsigned char)entrada[ini])) {
+        ini++;
     }
 
     size_t fim = strlen(entrada);
-    while (fim > inicio && isspace((unsigned char)entrada[fim - 1])) {
+    while (fim > ini && isspace((unsigned char)entrada[fim - 1])) {
         fim--;
     }
 
-    size_t tamanho = fim - inicio;
-    if (tamanho == 0) {
+    size_t n = fim - ini;
+    if (n == 0) {
         printf("Erro: a entrada está vazia.\n");
         return 1;
     }
 
-    for (size_t i = 0; i < tamanho; i++) {
-        romano[i] = (char)toupper((unsigned char)entrada[inicio + i]);
+    /* Normaliza para maiúsculas */
+    for (size_t i = 0; i < n; i++) {
+        romano[i] = (char)toupper((unsigned char)entrada[ini + i]);
     }
-    romano[tamanho] = '\0';
+    romano[n] = '\0';
 
     int total = 0;
+
+    /* Para validar a ordem dos “blocos” (evita casos como IIV, VX, etc.) */
     int ultimo_bloco = 4000;
+
     char anterior = '\0';
     int repeticoes = 0;
 
-    for (size_t i = 0; i < tamanho; i++) {
+    for (size_t i = 0; i < n; i++) {
         char atual = romano[i];
-        int valor_atual = valor_romano(atual);
+        int va = valor_romano(atual);
 
-        if (valor_atual == 0) {
+        if (va == 0) {
             printf("Erro: símbolo inválido '%c'. Utilize apenas I, V, X, L, C, D, M.\n", atual);
             return 1;
         }
 
+        /* Contagem de repetições seguidas */
         if (atual == anterior) {
             repeticoes++;
         } else {
             repeticoes = 1;
         }
 
+        /* V, L, D não podem ser repetidos */
         if ((atual == 'V' || atual == 'L' || atual == 'D') && repeticoes > 1) {
             printf("Erro: '%c' não pode ser repetido.\n", atual);
             return 1;
         }
 
+        /* I, X, C, M no máximo 3 vezes seguidas */
         if ((atual == 'I' || atual == 'X' || atual == 'C' || atual == 'M') && repeticoes > 3) {
             printf("Erro: '%c' não pode aparecer mais de 3 vezes seguidas.\n", atual);
             return 1;
         }
 
-        if (i + 1 < tamanho) {
+        /* Verifica possível subtração (ex: IV, IX, XL, ...) */
+        if (i + 1 < n) {
             char seguinte = romano[i + 1];
-            int valor_seguinte = valor_romano(seguinte);
+            int vb = valor_romano(seguinte);
 
-            if (valor_seguinte == 0) {
+            if (vb == 0) {
                 printf("Erro: símbolo inválido '%c'. Utilize apenas I, V, X, L, C, D, M.\n", seguinte);
                 return 1;
             }
 
-            if (valor_seguinte > valor_atual) {
+            if (vb > va) {
+                /* Não pode repetir antes de subtrair: IIV é inválido */
                 if (repeticoes > 1) {
                     printf("Erro: '%c' não pode ser repetido antes de uma subtração.\n", atual);
                     return 1;
@@ -106,7 +119,9 @@ int main(void) {
                     return 1;
                 }
 
-                int bloco = valor_seguinte - valor_atual;
+                int bloco = vb - va;
+
+                /* Ordem inválida (ex: IXC, IXL, etc.) */
                 if (bloco > ultimo_bloco) {
                     printf("Erro: ordem inválida no numeral romano.\n");
                     return 1;
@@ -115,6 +130,7 @@ int main(void) {
                 total += bloco;
                 ultimo_bloco = bloco;
 
+                /* Consumimos dois símbolos */
                 i++;
                 anterior = '\0';
                 repeticoes = 0;
@@ -122,16 +138,17 @@ int main(void) {
             }
         }
 
-        if (valor_atual > ultimo_bloco) {
+        /* Caso normal: soma e valida ordem */
+        if (va > ultimo_bloco) {
             printf("Erro: ordem inválida no numeral romano.\n");
             return 1;
         }
 
-        total += valor_atual;
-        ultimo_bloco = valor_atual;
+        total += va;
+        ultimo_bloco = va;
         anterior = atual;
     }
 
-    printf("%s = %d\n", romano, total);
+    printf("Numero romano em decimal: %s = %d\n", romano, total);
     return 0;
 }
