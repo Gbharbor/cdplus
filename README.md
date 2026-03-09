@@ -1,71 +1,29 @@
-# C e C++ Programming
+# C / C++ Programming — Computer Engineering
 
-Este repositório contém exemplos e informações sobre as linguagens de programação **C** e **C++**. Estas linguagens são amplamente utilizadas no desenvolvimento de software, desde sistemas operacionais até aplicações de alta performance.
+![C](https://img.shields.io/badge/language-C-blue)
+![C++](https://img.shields.io/badge/language-C++-blue)
 
-## Índice
+This repository contains study materials, exercises, and implementations developed during my studies in **Computer Engineering**.
 
-- [Introdução](#introdução)
-- [Instalação](#instalação)
-  - [C](#c)
-  - [C++](#c-1)
-- [Exemplos de Código](#exemplos-de-código)
-- [Referências](#referências)
+The primary focus is the use of **C and C++** to understand fundamental programming concepts, low-level computation, and data structures.
 
-## Introdução
+The repository aggregates code produced throughout multiple courses, including:
 
-### C
+- Programming Languages
+- Data Structures
+- Programming Laboratory
 
-C é uma linguagem de programação de propósito geral, desenvolvida nos anos 70. É amplamente utilizada devido à sua eficiência e controle sobre os recursos de hardware. A linguagem C é a base de muitas outras linguagens de programação, incluindo o próprio C++.
+The goal is to build a **solid foundation in systems programming, algorithmic reasoning, and efficient memory manipulation**.
 
-### C++
+---
+Academic Context
 
-C++ é uma extensão da linguagem C que introduz recursos de **programação orientada a objetos**. Foi projetada para permitir uma abordagem mais modular, reutilizável e robusta no desenvolvimento de software.
+This repository is part of my studies in Computer Engineering, where C and C++ are used to develop strong foundations in:
 
-## Instalação
+- algorithmic thinking
+- data structures
+- memory management
+- low-level programming
+- systems-oriented development
 
-Para compilar e executar programas em C e C++, você precisará de um compilador. Algumas opções populares incluem:
-
-- **GCC** (GNU Compiler Collection)
-- **Clang**
-- **Microsoft Visual Studio**
-
-### Exemplo de Instalação do GCC (Linux)
-
-```bash
-sudo apt update
-sudo apt install build-essential
-```
-
-### Compilação e Execução
-
-Para compilar um programa em C ou C++, utilize os comandos abaixo:
-
-- Para C:
-
-  ```bash
-  gcc nome_do_arquivo.c -o nome_do_programa
-  ./nome_do_programa
-  ```
-
-- Para C++:
-
-  ```bash
-  g++ nome_do_arquivo.cpp -o nome_do_programa
-  ./nome_do_programa
-  ```
-
-## Exemplos de Código
-
-O repositório contém diversos exemplos práticos de código em C e C++. Entre eles:
-
-- Leitura e escrita de dados
-- Manipulação de strings
-- Uso de ponteiros e referências
-- Programação orientada a objetos com C++
-
-## Referências
-
-- [C Programming Language - Kernighan and Ritchie](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-- [C++ Programming Language - Bjarne Stroustrup](https://en.wikipedia.org/wiki/C%2B%2B)
-- [Documentação do GCC](https://gcc.gnu.org/onlinedocs/gcc/)
-- [LearnCpp - Tutorial de C++](https://www.learncpp.com/)
+Many of the programs were developed as part of laboratory exercises and programming assignments.
