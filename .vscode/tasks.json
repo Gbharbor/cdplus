@@ -1,0 +1,26 @@
+{
+   "version": "2.0.0",
+   "tasks": [
+       {
+           "label": "Compilar C",
+           "type": "shell",
+           "command": "gcc",
+           "args": [
+               "-Wall",
+               "-Wextra",
+               "-Wpedantic",
+               "-std=c11",
+               "${file}",
+               "-o",
+               "${fileBasenameNoExtension}"
+           ],
+           "options": {
+               "cwd": "${fileDirname}"
+           },
+           "group": {
+               "kind": "build",
+               "isDefault": true
+           }
+       }
+   ]
+}
