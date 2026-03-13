@@ -28,7 +28,7 @@ int main(void) {
     char palavra[MAX];
 
     /* abrir ficheiro */
-    ficheiro = fopen("e2text.txt", "r");
+    ficheiro = fopen("e2_AF0.2text.txt", "r");
 
     if (ficheiro == NULL) {
         printf("Erro ao abrir o ficheiro.\n");
