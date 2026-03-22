@@ -1,0 +1,48 @@
+AF 1.2 – Relatorio de Testes
+
+Teste 1: Calcular média sem estudantes  
+Resultado esperado: O programa deve informar que não existem estudantes.  
+Resultado obtido: O programa apresentou a mensagem corretamente.  
+Estado: Sucesso  
+
+Teste 2: Adicionar 3 estudantes e listar  
+Resultado esperado: Os 3 estudantes devem aparecer corretamente com nome e nota.  
+Resultado obtido: A listagem foi apresentada corretamente.  
+Estado: Sucesso  
+
+Teste 3: Calcular média com 3 estudantes  
+Dados: João 10, Maria 20, Ana 15  
+Resultado esperado: Média = 15.00  
+Resultado obtido: Média = 15.00  
+Estado: Sucesso  
+
+Teste 4: Adicionar mais de 10 estudantes  
+Resultado esperado: O programa refatorado deve aumentar a capacidade dinamicamente.  
+Resultado obtido: O programa aceitou mais de 10 estudantes corretamente.  
+Estado: Sucesso  
+
+Teste 5: Inserir nota inválida  
+Resultado esperado: O programa deve rejeitar notas fora do intervalo 0 a 20.  
+Resultado obtido: A validação funcionou corretamente.  
+Estado: Sucesso  
+
+Teste 6: Inserir nome com espaços  
+Dados: "João Silva"  
+Resultado esperado: O nome completo deve ser armazenado corretamente.  
+Resultado obtido: O nome foi apresentado corretamente na listagem.  
+Estado: Sucesso  
+
+Teste 7: Entrada inválida no menu  
+Dados: "abc"  
+Resultado esperado: O programa deve detetar erro e pedir nova entrada.  
+Resultado obtido: O erro foi tratado corretamente.  
+Estado: Sucesso  
+
+Teste 8: Libertação de memória  
+Resultado esperado: A memória deve ser libertada no final da execução.  
+Resultado obtido: O programa terminou sem erros aparentes.  
+Estado: Sucesso  
+
+Conclusão:  
+O programa foi testado em diferentes cenários, incluindo casos normais, limites e entradas inválidas.  
+Todos os testes foram bem-sucedidos, confirmando o correto funcionamento do sistema.

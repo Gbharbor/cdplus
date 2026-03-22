@@ -1,0 +1,61 @@
+AF 1.2 – Bugs Identificados
+
+Bug 1
+Linha: 26
+Tipo de erro: Sintaxe
+Descrição: A função setlocale() e a constante LC_ALL são utilizadas sem incluir a biblioteca <locale.h>.
+Impacto: O programa pode não compilar, apresentando erro por identificadores não declarados.
+
+Bug 2
+Linha: 28
+Tipo de erro: Execução
+Descrição: O resultado de malloc() não é verificado.
+Impacto: Se a alocação de memória falhar, o programa poderá aceder a um ponteiro NULL e falhar durante a execução.
+
+Bug 3
+Linha: 12-13
+Tipo de erro: Problema de âmbito
+Descrição: Uso de variáveis globais (estudantes e numEstudantes).
+Impacto: Aumenta o acoplamento, dificulta a manutenção, reduz modularidade e vai contra a boa prática pedida no enunciado.
+
+Bug 4
+Linha: 42
+Tipo de erro: Execução
+Descrição: A leitura do nome com scanf("%s", nome) aceita apenas uma palavra e não impede entrada excessiva.
+Impacto: Nomes com espaços são lidos de forma incompleta e pode haver risco de overflow do vetor nome.
+
+Bug 5
+Linha: 44
+Tipo de erro: Sintaxe
+Descrição: Falta uma vírgula na chamada scanf("%f" &nota).
+Impacto: O programa não compila.
+
+Bug 6
+Linha: 74
+Tipo de erro: Execução
+Descrição: A variável soma é declarada, mas não é inicializada antes de ser usada.
+Impacto: O cálculo da média pode produzir valores incorretos devido ao uso de lixo de memória.
+
+Bug 7
+Linha: 80
+Tipo de erro: Execução
+Descrição: A média é calculada com divisão por numEstudantes sem verificar se o valor é zero.
+Impacto: Pode ocorrer divisão por zero quando não existirem estudantes registados.
+
+Bug 8
+Linha: 99-101
+Tipo de erro: Fuga de memória
+Descrição: A memória alocada dinamicamente para o vetor estudantes não é libertada.
+Impacto: O programa termina com fuga de memória.
+
+Bug 9
+Linha: 37
+Tipo de erro: Execução
+Descrição: A leitura da opção do menu com scanf("%d", &opcao) não é validada.
+Impacto: Se o utilizador inserir um valor não numérico, o programa pode entrar em comportamento incorreto.
+
+Bug 10
+Linha: 39-53
+Tipo de erro: Execução
+Descrição: O switch não possui caso default para tratar opções inválidas.
+Impacto: O utilizador pode introduzir uma opção incorreta sem receber qualquer mensagem de erro.
