@@ -1,0 +1,17 @@
+# Compilacao (C)
+*.o
+*.out
+programa
+
+# Pastas locais / pessoais
+rf2-1-ignore/
+m1/
+
+# VS Code (manter configs uteis)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# executaveis comuns
+a.out
+*.exe
