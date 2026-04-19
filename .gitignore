@@ -9,7 +9,7 @@ rf2-1-ignore/
 m1/
 
 # VS Code (manter configs uteis)
-.vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 
