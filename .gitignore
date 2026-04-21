@@ -16,3 +16,6 @@ m1/
 # executaveis comuns
 a.out
 *.exe
+
+#folder & filles
+mph4.txt
