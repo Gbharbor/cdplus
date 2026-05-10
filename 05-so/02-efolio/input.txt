@@ -1,0 +1,6 @@
+nt=2
+dim_buffer_ordenacao=2
+dim_buffer_fusao=10
+n=12
+# dados
+3 21 18 8 4 4 32 17 23 1 5 31

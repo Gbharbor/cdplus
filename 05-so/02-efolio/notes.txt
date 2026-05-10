@@ -1,0 +1,109 @@
+# SO efB-25
+Enunciado: Algoritmo Merge Sort (ordenação por fusão) multitarefa
+- Escreva um programa multitarefa em linguagem C99 padrão e segundo a norma POSIX, de nome
+mtms.c, que ordene uma lista de números inteiros com valores entre 0 e 65535 dados num
+ficheiro, utilizando o algoritmo Merge Sort na variante original que a seguir se descreve.
+- O nome do ficheiro de entrada a processar é dado ao programa pela entrada padrão (primeira
+string sem espaços).
+- O processamento dos dados segue o diagrama seguinte (fig1)
+Ficheiro Tarefa Buffers Tarefas Buffer Tarefa
+ de -> Leitora -> ordenação -> Ordenadoras -> Fusão -> Fusão
+entrada (1) (2) (nt) (1) (1)
+A tarefa Leitora lê o ficheiro de entrada, que tem um cabeçalho informativo e os dados a
+ordenar. O cabeçalho contem linhas com o num. de tarefas Ordenadoras, a dimensão dos buffers de
+ordenação e de fusão (buffers são de apontadores para vetores com até 16 inteiros) e o num. de
+inteiross a ordenar. O ficheiro de entrada segue o seguinte formato exemplo,
+nt=2
+dim_buffer_ordenacao=2
+dim_buffer_fusao=10
+n=12
+# dados
+3 21 18 8 4 4 32 17 23 1 5 31
+onde o num. de inteiros máximo é 20000 e cada linha tem no máximo 12 inteiros. Pode ocorrer
+haver num. repetidos. Após ler o cabeçalho e todos os números com o vetor de entrada para
+memória, divide-os em subvetores de até 16 números e coloca os enderecos dos subvetores nos
+buffers de ordenação. A tarefa deve escolher um buffer aleatoriamente e se estiver ocupado deve
+libertar o CPU e voltar a tentar. Quando conseguir aceder a um buffer deve preenchê-lo
+completamente. Após colocar todos os números nos buffers deve terminar.
+- As tarefas ordenadoras também devem escolher um buffer de ordenação aleatoriamente e se
+estiver ocupado devem libertar o CPU e voltar a tentar. Quando conseguir aceder a um buffer
+devem retirar um só endereco de cada vez, ordenar o respetivo subvetor e colocá-lo no buffer de
+fusão.
+- A tarefa de fusão deve possuir internamente um vetor de dimensão igual ao de entrada e
+iniciá-lo como vazio. cada vez que aceder ao buffer de fusão deve efetuar a fusão do seu vetor
+interno com o subvetor que retirou. Deve repetir este procedimento até ficar na posse de todo o
+vetor de entrada ordenado.
+- Após a ordenação concluída e as tarefas Leitora, Ordenadoras e de Fusão terminarem, a tarefa
+principal deve escrever um relatório na saída padrão com o seguinte formato exemplo,
+nt=XXX
+n=XXX
+T. Leitora:
+XXX ints em XXX+XXX buffers
+T. Ordenadoras(nt):
+T_0: XXX ints em XXX buffers
+T_1: XXX ints em XXX buffers
+T. Fusão:
+XXX ints em XXX fusões
+# dados ordenados
+1 3 4 4 5 8 17 18 21 23 31 32
+onde os inteiros ordenados devem ser escritos 12 por linha, possivelmente excepto a última
+linha. Se o num. linhas for superior a 10 (n>120), deve substituir linhas intermédias por 
+"...", tipo por exemplo,
+# ex.
+1 3 4 4 5
+...
+17 18 21 23 31
+- Ao tentarem aceder ao buffer de Fusão, as tarefas Ordenadoras e a Tarefa de Fusão devem
+utilizar espera ativa (busy waiting), ou seja, se não conseguirem acesso devem libertar o CPU e
+voltar a tentar novamente até conseguirem.
+- Para uma tarefa libertar o CPU e dar oportunidade às outras de executar, utilize a função
+sched_yield() que tem o protótipo,
+#include <sched.h>
+int sched_yield(void);
+Notas:
+- Este é o enunciado completo. Não existe enunciado em formato pdf.
+- Todos os ficheiros estão codificados em UTF-8. Se vai desenvolver o seu programa fora do VPL,
+configure o seu editor para codificação UTF-8.
+- Os dados de saída no VPL devem ser rigorosamente iguais ao esperado. Um erro muito comum é
+imprimir espaços em branco adicionais no final da linha e/ou linhas em branco extra.
+- Prevê-se a disponibilidade do ambiente VPL para testes a partir de 3a feira, dia 12 maio.
+** Avaliação **
+- A cotação deste e-fólio é 5 valores.
+- Apenas são considerados os resultados e o código dos programas constantes no recurso VPL.
+- O e-fólio só é considerado entregue com:
+(i) O código do programa do aluno constante no recurso VPL (espaço central);
+(ii) A submissão de um ficheiro pdf no recurso e-fólio no espaço turma, com uma página contendo
+a identificação do aluno e uma imagem com o resultado dos testes obtidos com o botão "evaluate"
+no VPL.
+- Na realização deste trabalho não é permitido a utilização de funcões da biblioteca pthreads
+mais avançadas não referidas no LAB3 (texto e programas, em caso de dúvida questionar o seu
+uso).
+- O código deve estar suficientemente comentado para se compreender o seu funcionamento.
+- O programa é avaliado tendo como ponto de partida a percentagem de casos de teste corretos. O
+nível de simplicidade e qualidade do código também é avaliado. Programas considerados mal
+estruturados, demasiado complexos, confusos, ineficientes, mal comentados, com variáveis
+globais desnecessárias e falta de originalidade podem ser penalizados até 70%.
+- Esta é uma prova de avaliação individual e não um trabalho de "grupo” ou "plágio". A sua
+resolução deve provir unicamente do conhecimento adquirido e trabalho original desenvolvido
+pelo próprio aluno. A probabilidade de dois alunos apresentarem programas iguais ou “quase
+iguais” é considerada nula, caso em que terão uma severa penalização por falta de
+originalidade. 
+
+Ideia correta da solução
+Threads necessárias
+1 thread Leitora
+Lê o ficheiro.
+Guarda os n inteiros em memória.
+Divide em blocos de até 16 inteiros.
+Coloca ponteiros desses blocos nos buffers de ordenação.
+nt threads Ordenadoras
+Escolhem aleatoriamente um buffer de ordenação.
+Retiram 1 subvetor por vez.
+Ordenam esse subvetor.
+Colocam o subvetor ordenado no buffer de fusão.
+1 thread Fusão
+Mantém um vetor interno final.
+Retira subvetores ordenados do buffer de fusão.
+Faz merge progressivo até ter os n inteiros ordenados.
+
+Isto encaixa diretamente no tema de processos/threads: o SO alterna rapidamente entre tarefas, dando a ilusão de paralelismo mesmo quando há apenas uma CPU, e por isso o programa não deve depender da velocidade relativa das threads.
